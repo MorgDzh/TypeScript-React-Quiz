@@ -1,10 +1,12 @@
 import React from "react";
+import {AnswerObject} from "../App"
 
+// Callback ничего не возвращает поэтому указываю как void
 type Props = {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void,
+  userAnswer: AnswerObject | undefined;
   questionNum: number;
   totalQuestions: number;
 };
@@ -31,7 +33,8 @@ const QuestionCard: React.FC<Props> = ({
         {answers.map((answer) => (
           <div key={answer}>
             {/* Без ответа нельзя будет прочитать значение(value=answer) */}
-            <button disabled={userAnswer} value={answer} onClick={callback}>
+            {/* Превратил ответ юзера в булевое значение через тернарный оператор*/}
+            <button disabled={userAnswer ? true : false} value={answer} onClick={callback}>
               <span dangerouslySetInnerHTML={{ __html: answer }} />
             </button>
           </div>

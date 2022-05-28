@@ -5,8 +5,8 @@ import QuestionCard from "./components/QuestionCard";
 // Types
 import { QuestionState, Difficulty } from "./API";
 
-// Создание нового типа, не экспортирую, потому что буду юзать в других компонентах
-type AnswerObject = {
+// Создание нового типа
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
