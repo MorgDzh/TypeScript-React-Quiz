@@ -43,9 +43,36 @@ const App = () => {
     setLoading(false);
   };
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Если игра не закончена
+    if (!gameOver) {
+      // Ответ юзера
+      const answer = e.currentTarget.value;
+      // Проверка ответа на правильность
+      const correct = questions[number].correct_answer === answer;
+      // Добавление баллов если ответ правильный
+      if (correct) setScore (prev => prev + 1);
+      // Сохрание ответа в массиве ответов
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObject])
+    }
+  };
 
-  const nextQuestion = () => {};
+  const nextQuestion = () => {
+    // Перейти на следующий вопрос если ответ не последний
+    const nextQuestion = number + 1;
+
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true)
+    } else {
+      setNumber(nextQuestion);
+    }
+  };
 
   return (
     <div className="App">
