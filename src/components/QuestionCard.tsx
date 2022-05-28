@@ -2,9 +2,9 @@ import React from "react";
 
 type Props = {
   question: string;
-  answer: string[];
+  answers: string[];
   callback: any;
-  userAnswer: string;
+  userAnswer: any;
   questionNum: number;
   totalQuestions: number;
 };
@@ -13,20 +13,31 @@ type Props = {
 // Снизу обычные пропсы которые можно юзать в компоненте
 const QuestionCard: React.FC<Props> = ({
   question,
-  answer,
+  answers,
   callback,
   userAnswer,
   questionNum,
   totalQuestions,
 }) => {
-  return <div>
-    <p className="number">
-      Question: {questionNum} / {totalQuestions}
-    </p>
-    {/* dangerouslySetInnerHTML -> используем потому что не знаем какие данные парсим, опасные или нет */}
-    {/* Вторые косые скобки из за того что внутри обьект */}
-    <p dangerouslySetInnerHTML={{ __html: question}} />
-  </div>;
+  return (
+    <div>
+      <p className="number">
+        Question: {questionNum} / {totalQuestions}
+      </p>
+      {/* dangerouslySetInnerHTML -> используем потому что не знаем какие данные парсим, опасные или нет */}
+      {/* Вторые косые скобки из за того что внутри обьект */}
+      <p dangerouslySetInnerHTML={{ __html: question }} />
+      <div>
+        {answers.map((answer) => (
+          <div>
+            <button disabled={userAnswer} onClick={callback}>
+              <span dangerouslySetInnerHTML={{ __html: answer }} />
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default QuestionCard;
