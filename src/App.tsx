@@ -5,7 +5,7 @@ import QuestionCard from "./components/QuestionCard";
 // Types
 import { QuestionState, Difficulty } from "./API";
 // Styles
-import { GlobalStyle } from "./App.styles";
+import { GlobalStyle, Wrapper } from "./App.styles";
 
 // Создание нового типа
 export type AnswerObject = {
@@ -78,8 +78,8 @@ const App = () => {
 
   return (
     <>
-    <GlobalStyle /> 
-      <div className="App">
+      <GlobalStyle />
+      <Wrapper>
         <h1>TYPESCRIPT QUIZ</h1>
         {/* Проверка, если все ответы равны 10 то вернет null */}
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
@@ -110,7 +110,7 @@ const App = () => {
             Next Question
           </button>
         ) : null}
-      </div>
+      </Wrapper>
     </>
   );
 };
