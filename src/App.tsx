@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import { fetchQuizQuestions } from "./API";
 // Components
 import QuestionCard from "./components/QuestionCard";
+// Types
+import { Difficulty } from "./API";
 
 const TOTAL_QUESTIONS = 10;
 
@@ -11,6 +14,9 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+
+  // Функция должна получить два заданных параметра, иначе будет жаловаться(плюсики тайпскрипта)
+  console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY));
 
   const startTrivia = async () => {};
 
@@ -27,15 +33,15 @@ const App = () => {
       <p className="score">Score:</p>
       <p>Loading Questions...</p>
       {/* Без пропсов будет компонент будет ругаться */}
-      <QuestionCard 
+      {/* <QuestionCard 
         questionNum={number + 1}
         totalQuestions={TOTAL_QUESTIONS}
         question={questions[number].question}
         answers={questions[number].answers}
         userAnswer={userAnswers ? userAnswers[number] : undefined}
         callback={checkAnswer}
-      />
-      <button className="next" onClick={nextQuestion}></button>
+      /> */}
+      <button className="next" onClick={nextQuestion}>Next Question</button>
     </div>
   );
 };
