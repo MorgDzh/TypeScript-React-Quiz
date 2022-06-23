@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
-Click here -> [View a sample result](https://quiztypescript.web.app/)
+## <a href="https://quiztypescript.web.app/" target="_blank">VIEW DEMO</a>
 
 ## Available Scripts
 
